@@ -40,8 +40,8 @@ class ModalSwitch extends Component {
 }
 
 const Image = styled.div` 
-width: 400px;
-height: 400px;
+width: 305px;
+height: 305px;
 background: no-repeat center/150% url(/img/${({index}) => index}.jpg);`
 
 const IMAGES = [
@@ -72,6 +72,8 @@ display: grid;
 grid-template-columns: repeat(3,305px);
 width: 950px;
 margin:auto;
+gap: 20px;
+margin-top: 80px;
 `
 
 function Gallery() {
