@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import styled from 'styled-components';
+import styled, {css}from 'styled-components';
+import UserGrid, { MiniUserGrid } from './Profile/UserGrid';
 
 class ModalSwitch extends Component {
   previousLocation = this.props.location;
@@ -42,7 +43,14 @@ class ModalSwitch extends Component {
 const Image = styled.div` 
 width: 305px;
 height: 305px;
-background: no-repeat center/150% url(/img/${({index}) => index}.jpg);`
+background: no-repeat center/150% url(/img/${({index}) => index}.jpg);
+${({inModal}) => !inModal && css`
+:hover {
+    opacity: .7;
+}
+`}
+
+`
 
 const IMAGES = [
   { id: 1, title: "Office"},
@@ -52,7 +60,7 @@ const IMAGES = [
   { id: 5, title: "Dumbells"  },
   { id: 6, title: "Woman Training"  },
   { id: 7, title: "Woman Training"  },
-  { id: 8, title: "Woman Training"  },
+  { id: 8, title: "Healthy Diet"  },
   { id: 9, title: "Woman Training"  }
 ];
 
@@ -63,21 +71,22 @@ function Home() {
         <Link to="/gallery">Värmt Välkommen Till Ronna Rehab</Link>
       </h1>
       <h2>Ronna Rehab Logo</h2>
-    </div>
+     </div>
   );
 }
 
 const PhotoGrid = styled.div`
 display: grid;
 grid-template-columns: repeat(3,305px);
-width: 950px;
-margin:auto;
+justify-content: center;
 gap: 20px;
-margin-top: 80px;
+margin-bottom: 50px;
 `
 
 function Gallery() {
   return (
+      <div>
+   <UserGrid/>
     <PhotoGrid>
       {IMAGES.map(i => (
         <Link
@@ -92,6 +101,7 @@ function Gallery() {
           </Link>
       ))}
     </PhotoGrid>
+    </div>
   );
 }
 
@@ -143,7 +153,7 @@ function Modal({ match, history }) {
         }}
       >
         <h1>{image.title}</h1>
-        <Image index={image.id} />
+        <Image inModal index={image.id} />
         <button type="button" onClick={back}>
           Close
         </button>
