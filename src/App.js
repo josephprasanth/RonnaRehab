@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled, {css}from 'styled-components';
 import UserGrid, { MiniUserGrid } from './Profile/UserGrid';
 import {Modal} from './Modal/Modal'
-import {Posts} from './Posts'
+import Posts from './Posts'
 
 class ModalSwitch extends Component {
   previousLocation = this.props.location;
@@ -42,7 +42,7 @@ class ModalSwitch extends Component {
   }
 }
 
-const Image = styled.div` 
+export const Image = styled.div` 
 width: 305px;
 height: 305px;
 background: no-repeat center/150% url(/img/${({index}) => index}.jpg);
