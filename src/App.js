@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled, {css}from 'styled-components';
 import UserGrid, { MiniUserGrid } from './Profile/UserGrid';
+import {Modal} from './Modal/Modal'
+import {Posts} from './Posts'
 
 class ModalSwitch extends Component {
   previousLocation = this.props.location;
@@ -52,17 +54,7 @@ ${({inModal}) => !inModal && css`
 
 `
 
-const IMAGES = [
-  { id: 1, title: "Office"},
-  { id: 2, title: "Reception"},
-  { id: 3, title: "Gymn - View1"},
-  { id: 4, title: "Gymn - View2"}, 
-  { id: 5, title: "Dumbells"  },
-  { id: 6, title: "Woman Training"  },
-  { id: 7, title: "Woman Training"  },
-  { id: 8, title: "Healthy Diet"  },
-  { id: 9, title: "Woman Training"  }
-];
+
 
 function Home() {
   return (
@@ -88,7 +80,7 @@ function Gallery() {
       <div>
    <UserGrid/>
     <PhotoGrid>
-      {IMAGES.map(i => (
+      {Posts.map(i => (
         <Link
           key={i.id}
           to={{
@@ -106,7 +98,7 @@ function Gallery() {
 }
 
 function ImageView({ match }) {
-  let image = IMAGES[parseInt(match.params.id, 10) - 1];
+  let image = Posts[parseInt(match.params.id, 10) - 1];
 
   if (!image) return <div>Image not found</div>;
 
@@ -118,49 +110,7 @@ function ImageView({ match }) {
   );
 }
 
-function Modal({ match, history }) {
-  let image = IMAGES[parseInt(match.params.id, 10) - 1];
 
-  if (!image) return null;
-
-  let back = e => {
-    e.stopPropagation();
-    history.goBack();
-  };
-
-  return (
-    <div
-      onClick={back}
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        background: "rgba(0, 0, 0, 0.15)"
-      }}
-    >
-      <div
-        className="modal"
-        style={{
-          position: "absolute",
-          background: "#fff",
-          top: 25,
-          left: "10%",
-          right: "10%",
-          padding: 15,
-          border: "2px solid #444"
-        }}
-      >
-        <h1>{image.title}</h1>
-        <Image inModal index={image.id} />
-        <button type="button" onClick={back}>
-          Close
-        </button>
-      </div>
-    </div>
-  );
-}
 
 function ModalGallery() {
   return (

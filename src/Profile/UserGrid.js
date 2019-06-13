@@ -54,7 +54,7 @@ export default function() {
       </Label>
       <Description>
         Vi är en primärvårdsrehab belägen våningen under Ronna Vårdcentral i
-        Ronna Centrum i Södertälje. Vi erbjuder Fysioterapeuter,
+        Ronna Centrum i Södertälje.Vi erbjuder Fysioterapeuter,
         Arbetsterapeuter, Dietist och Lymfterapeut. Här skräddarsyr vi Ditt
         rehabiliteringsprogram samt sätter in den kompetens som behövs i varje
         enskilt fall.
