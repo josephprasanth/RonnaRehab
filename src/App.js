@@ -4,6 +4,7 @@ import styled, {css}from 'styled-components';
 import UserGrid, { MiniUserGrid } from './Profile/UserGrid';
 import {Modal} from './Modal/Modal'
 import Posts from './Posts'
+import { Gallery } from './Gallery/Gallery';
 
 class ModalSwitch extends Component {
   previousLocation = this.props.location;
@@ -67,35 +68,9 @@ function Home() {
   );
 }
 
-const PhotoGrid = styled.div`
-display: grid;
-grid-template-columns: repeat(3,305px);
-justify-content: center;
-gap: 20px;
-margin-bottom: 50px;
-`
 
-function Gallery() {
-  return (
-      <div>
-   <UserGrid/>
-    <PhotoGrid>
-      {Posts.map(i => (
-        <Link
-          key={i.id}
-          to={{
-            pathname: `/img/${i.id}`,
-            // this is the trick!
-            state: { modal: true }
-          }}
-        >
-          <Image index={i.id} />
-          </Link>
-      ))}
-    </PhotoGrid>
-    </div>
-  );
-}
+
+
 
 function ImageView({ match }) {
   let image = Posts[parseInt(match.params.id, 10) - 1];

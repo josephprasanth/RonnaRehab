@@ -6,4 +6,9 @@ height: 200px;
 background: no-repeat center/100% url(/img/rrlogo3.png);
 border-radius: 100px;
 margin: 40px;
+${({mini}) => mini & css`
+width: 50px;
+height: 50px;
+margin: 5px;
+`}
 `

@@ -3,6 +3,8 @@ import Posts from "../Posts";
 import { Image } from "../App";
 import styled, { createGlobalStyle } from "styled-components";
 import { PostGrid, InfoGrid } from "./PostGrid";
+import { MiniUserGrid } from "../Profile/UserGrid";
+import { ProfileImage } from "../Profile/ProfileImage";
 
 const OverFlowHidden = createGlobalStyle`
 body {
@@ -15,9 +17,10 @@ const ModalStyled = styled.div`
   background: #fff;
   top: ${({ top }) => top}px;
   left: 25%;
-  right: 25%;
+  right: 10%;
   padding: 15px;
   border: 2px solid #444;
+  width: 600px;
 `;
 
 export function Modal({ match, history }) {
@@ -43,13 +46,17 @@ export function Modal({ match, history }) {
         background: "rgba(0, 0, 0, 0.8)"
       }}
     >
-      <ModalStyled top={window.scrollY + (window.innerHeight / 2) - 250}>
+      <ModalStyled top={window.scrollY + window.innerHeight / 2 - 250}>
         <OverFlowHidden />
         <PostGrid>
           <Image inModal index={image.id} />
           <InfoGrid>
-            <h1>{image.title}</h1>
-            <div>Comments</div>
+            <h1> GridGallery</h1>
+            <MiniUserGrid>
+              {/* <ProfileImage mini/> */}
+              <h2>{image.title}</h2>
+            </MiniUserGrid>
+
             <div>45 Likes</div>
           </InfoGrid>
         </PostGrid>
