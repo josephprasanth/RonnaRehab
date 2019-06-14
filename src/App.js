@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled, {css}from 'styled-components';
-import UserGrid, { MiniUserGrid } from './Profile/UserGrid';
+import UserGrid from './Profile/UserGrid';
 import {Modal} from './Modal/Modal'
 import Posts from './Posts'
 import { Gallery } from './Gallery/Gallery';
@@ -43,16 +43,18 @@ class ModalSwitch extends Component {
   }
 }
 
-export const Image = styled.div` 
-width: 305px;
-height: 305px;
-background: no-repeat center/150% url(/img/${({index}) => index}.jpg);
-${({inModal}) => !inModal && css`
-:hover {
-    opacity: .7;
-}
-`}
-
+export const Image = styled.div`
+  width: 305px;
+  height: 305px;
+  @media(max-width:990px){
+    width: 100%;
+  }
+  background: no-repeat center/150% url(/img/${({index}) => index}.jpg);
+  ${({inModal}) => !inModal && css`
+    :hover {
+      opacity: .7; 
+    }
+  `}
 `
 
 
