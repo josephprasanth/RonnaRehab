@@ -17,9 +17,9 @@ const PhotoGrid = styled.div`
   @media (max-width: 990px) {
     gap: 5px;
     grid-template-columns: repeat(3 , 1fr);
-    grid-auto-rows: calc(33vw - 5px);
+    grid-auto-rows: calc(33vw - 10px);
   }
-`;
+`
 
 const LinkGrid = styled.div`
   display: grid;

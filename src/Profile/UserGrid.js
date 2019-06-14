@@ -38,8 +38,7 @@ const Name = styled.div`
 const Label = styled.div`
   grid-area: label;
   @media (max-width: 990px) {
-    padding-left: 25px;
-    
+    padding-left: 25px;    
   }
 `;
 const Description = styled.div`

@@ -15,13 +15,18 @@ body {
 const ModalStyled = styled.div`
   position: absolute;
   background: #fff;
-  top: ${({ top }) => top}px;
+  top: ${({top}) => top}px; 
   left: 25%;
-  right: 10%;
-  padding: 15px;
+  right: 25%;
+  width: 600px; 
   border: 2px solid #444;
-  width: 600px;
-`;
+  @media(max-width: 990px){
+    left: 0; 
+    right: 0; 
+    top: ${({top}) => top}px; 
+    width: auto; 
+  }
+`
 
 export function Modal({ match, history }) {
   let image = Posts[parseInt(match.params.id, 10) - 1];
