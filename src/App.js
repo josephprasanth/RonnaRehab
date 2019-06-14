@@ -35,7 +35,7 @@ class ModalSwitch extends Component {
         <Switch location={isModal ? this.previousLocation : location}>
           <Route exact path="/" component={Home} />
           <Route path="/gallery" component={Gallery} />
-          <Route path="/img/:id" component={ImageView} />
+          <Route path="/img/:id" component={Modal} />
         </Switch>
         {isModal ? <Route path="/img/:id" component={Modal} /> : null}
       </div>
@@ -65,28 +65,10 @@ function Home() {
       <h1>
         <Link to="/gallery">Värmt Välkommen Till Ronna Rehab</Link>
       </h1>
-      <h2>Ronna Rehab Logo</h2>
+      
      </div>
   );
 }
-
-
-
-
-
-function ImageView({ match }) {
-  let image = Posts[parseInt(match.params.id, 10) - 1];
-
-  if (!image) return <div>Image not found</div>;
-
-  return (
-    <div>
-      <h1>{image.title}</h1>
-      <Image index={image.id} />
-    </div>
-  );
-}
-
 
 
 function ModalGallery() {

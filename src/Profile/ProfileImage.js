@@ -13,9 +13,14 @@ height: 120px;
 }
 
 
-${({mini}) => mini & css`
-width: 50px;
-height: 50px;
-margin: 5px;
-`}
+${({mini}) => mini && css`
+    width: 50px; 
+    height: 50px; 
+    margin: 5px; 
+    @media (max-width: 990px) {
+      width: 50px; 
+      height: 50px; 
+      margin: 5px; 
+    }
+  `}
 `
